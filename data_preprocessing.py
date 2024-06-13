@@ -15,7 +15,7 @@ def mod_csv_combine(df1, df2):
 
 def remove_duplicate(df_name):
     df = pd.read_csv(df_name)
-    df = df.drop_duplicates('label')
+    df = df.apply(lambda x: x.astype(str).str.lower()).drop_duplicates(subset=['url'], keep='first')
     return df
 
 # def csv_combine(df1_name, df2_name):
